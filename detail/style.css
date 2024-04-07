@@ -1,0 +1,39 @@
+* {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: sans-serif;
+  /* background-color: aliceblue; */
+  background-image: url("/images/login-bg.png");
+  background-position: center;
+  /* background-color: rgba(13, 179, 230, 0.836); */
+  background-blend-mode: multiply;
+  height: 100vh;
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+}
+
+.text-pink {
+  color: rgb(185, 111, 42) !important;
+}
+
+.text-pink:hover {
+  color: rgb(225, 48, 77);
+}
+.navbar {
+  background-color: rgb(185, 111, 42);
+}
+.product {
+  background-color: rgb(185, 111, 42);
+}
+
+#name {
+  background-color: rgb(185, 111, 42);
+}
+#image {
+  width: 200px;
+}
+#price {
+  font-size: 50px;
+}

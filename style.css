@@ -1,0 +1,143 @@
+* {
+  scroll-behavior: smooth;
+}
+body {
+  background-color: rgb(185, 111, 42);
+  /* transition: all 9s; */
+}
+
+.text-pink {
+  color: rgb(185, 111, 42) !important;
+}
+
+.text-pink:hover {
+  color: rgb(225, 48, 77);
+}
+.navbar {
+  background-color: rgb(185, 111, 42);
+}
+.nav-link {
+  transition: all 0.5s;
+}
+.nav-link:hover {
+  background-color: rgb(240, 139, 45);
+  transform: scale(1.2);
+}
+.container-fluid {
+  background-color: rgb(185, 111, 42);
+}
+.my-slider {
+  height: 500px;
+}
+.dropdown-item {
+  transition: all 0.5s;
+}
+.dropdown-item:hover {
+  transform: scale(1.1);
+}
+.slider-img {
+  object-fit: cover;
+}
+.text-center {
+  background-color: rgb(185, 111, 42);
+  margin: 0;
+}
+
+#contact {
+  background-color: rgb(227, 118, 45);
+  height: 100px;
+}
+.contact-icons {
+  display: flex;
+  justify-content: space-evenly;
+  color: white;
+  padding: 0 350px;
+  margin-top: 20px;
+}
+.contact-text {
+  text-align: center;
+  color: white;
+}
+.btn {
+  color: brown;
+  background-color: rgb(255, 123, 0);
+}
+.btn:hover {
+  background-color: antiquewhite;
+}
+.fa-regular {
+  background-color: rgb(185, 111, 42);
+  color: rgb(0, 0, 0);
+  transition: all 0.5s;
+}
+.fa-user {
+  background-color: rgb(185, 111, 42);
+  color: rgb(0, 0, 0);
+  transition: all 0.5s;
+}
+.fa-user:hover {
+  background-color: rgb(240, 139, 45);
+  transform: scale(1.2);
+}
+.fa-regular:hover {
+  background-color: rgb(240, 139, 45);
+  transform: scale(1.2);
+}
+.product {
+  /* width: calc(25% - 20px); */
+  background-color: rgb(236, 234, 234);
+  /* margin: 10px; */
+  border-radius: 8px;
+  padding: 20px;
+  transition: all 0.2s;
+}
+.product:hover {
+  transform: scale(1.1);
+}
+.product-img {
+  width: 100%;
+  height: 290px;
+  object-fit: cover;
+  display: block;
+  /* transition: all 0.2s; */
+}
+
+/* .product-img:hover {
+  transform: scale(1.1);
+} */
+
+.product-name {
+  color: black;
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+  margin-top: 8px;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.product-prices {
+  color: gray;
+  font-size: 14px;
+}
+
+.product-prices s {
+  margin-left: 4px;
+  margin-right: 4px;
+}
+
+.new-price {
+  color: dodgerblue;
+  font-size: 16px;
+  font-weight: bold;
+}
+#search-input {
+  max-width: 500px;
+  margin: 0 auto;
+}
+#adn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+}

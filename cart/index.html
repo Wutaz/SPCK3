@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="../images/logo-emma-tron-02.png"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="./cart.css" />
+    <title>Giỏ hàng</title>
+  </head>
+  <body>
+    <nav class="navbar sticky-top navbar-expand-lg">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="./index.html"
+          ><img src="../images/logo-emma-tron-02.png" alt=""
+        /></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/productsmn/"
+                >Manga
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/productsmh/"
+                >Mô hình</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/productscp/"
+                >Trang phục cosplay</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/productsgd/"
+                >Gundam</a
+              >
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Dịch vụ
+              </a>
+              <ul class="dropdown-menu">
+                <!-- <li class="nav-item">
+                  <a class="nav-link" href="./contact.html">Liên hệ</a>
+                </li> -->
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="./comming soon/commingsoon.html"
+                    >Phản hồi với shop</a
+                  >
+                  <a
+                    class="dropdown-item"
+                    href="./comming soon/commingsoon.html"
+                    >Trả hàng</a
+                  >
+                  <a
+                    class="dropdown-item"
+                    href="./comming soon/commingsoon.html"
+                    >Đánh giá shop</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <!-- <li class="nav-item">
+              <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+            </li> -->
+          </ul>
+          <form class="d-flex" role="search" id="navbar-search-form">
+            <input
+              class="form-control me-2"
+              id="navbar-search"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button class="btn" type="submit">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+          </form>
+          <a href="./login/index.html">
+            <i class="fa-regular fa-user p-2 mx-2"></i>
+          </a>
+          <!-- da dang nhap -->
+          <div class="ms-3 d-none" id="login-block">
+            <i id="navbar-username"></i>
+            <button class="btn btn-sm btn-dark ms-2">Đăng xuất</button>
+          </div>
+          <!-- chua dang nhap -->
+          <div class="ms3 d-none" id="not-login-block">
+            <a href="/login" class="btn btn-sm btn-dark">Đăng nhập</a>
+            <a href="/register" class="btn btn-sm btn-dark ms-2">Đăng ky</a>
+          </div>
+          <div class="mx-3">
+            <a
+              type="button"
+              class="btn position-relative"
+              href="/cart/cart.html"
+            >
+              <i class="fa-solid fa-cart-shopping"></i>
+              <span
+                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                id="cart-quantity"
+              >
+                0
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="container mt-4">
+      <div class="row">
+        <div class="col-12 col-md-8">
+          <div class="py-4 px-3 rounded border">
+            <table class="table align-middle">
+              <thead>
+                <tr>
+                  <th scope="col">Hình ảnh</th>
+                  <th scope="col">Tên sản phẩm</th>
+                  <th scope="col">Giá bán</th>
+                  <th scope="col">Số lượng</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="tbody">
+                <tr>
+                  <td>
+                    <img
+                      src="https://shopdunk.com/images/thumbs/0022255_iphone-15-128gb_80.png"
+                      alt=""
+                      class="product-img"
+                    />
+                  </td>
+                  <td>
+                    <!-- <a href="" class="text-decoration-none text-black">
+                      Iphone 15 pro max</td>
+                    </a>
+                  <td>21.490.000₫</td> -->
+                  </td>
+
+                  <td>
+                    <div
+                      class="btn-group"
+                      role="group"
+                      aria-label="Basic mixed styles example"
+                    >
+                      <button type="button" class="btn btn-light">-</button>
+                      <button
+                        type="button"
+                        class="btn btn-light select-text"
+                        disabled
+                      >
+                        1
+                      </button>
+                      <button type="button" class="btn btn-light">+</button>
+                    </div>
+                  </td>
+                  <td>
+                    <button class="btn btn-sm btn-outline-danger">
+                      <i class="fa-regular fa-trash-can"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="text-end">
+              <a href="/productsmn" class="btn btn-outline-primary"
+                >Tiếp tục mua sắm</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-4">
+          <div class="py-4 px-3 rounded border">
+            <div class="d-flex justify-content-between my-1">
+              <span>Tổng phụ:</span>
+              <span class="fw-bold" id="subtotal">0₫</span>
+            </div>
+            <div class="d-flex justify-content-between my-1">
+              <span>Phí vận chuyển:</span>
+              <span class="fw-bold" id="shipping-fee">0₫</span>
+            </div>
+            <div class="d-flex justify-content-between my-1 fw-bold">
+              <span>Tổng cộng:</span>
+              <span class="text-primary" style="font-size: 17px" id="total"
+                >0₫</span
+              >
+            </div>
+            <hr />
+            <button class="btn btn-primary w-100" id="checkout-btn">
+              Đặt hàng
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./cart.js" type="module"></script>
+  </body>
+</html>
