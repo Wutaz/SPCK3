@@ -12,10 +12,12 @@ registerForm.onsubmit = function (event) {
   event.preventDefault();
   console.log("preventDefault");
   const username = document.getElementById("username");
+  const email = document.getElementById("email");
   const password = document.getElementById("password");
   const repassword = document.getElementById("repassword");
 
   const usernameError = document.getElementById("username-error");
+  const emailError = document.getElementById("email-error");
   const passwordError = document.getElementById("password-error");
   const repasswordError = document.getElementById("repassword-error");
   const registerError = document.getElementById("register-error");
@@ -25,6 +27,11 @@ registerForm.onsubmit = function (event) {
 
   if (username.value === "") {
     usernameError.innerHTML = "Vui lòng nhập tên đăng ký";
+  } else {
+    usernameError.innerHTML = "";
+  }
+  if (email.value === "") {
+    emailError.innerHTML = "Vui lòng nhập email";
   } else {
     usernameError.innerHTML = "";
   }
@@ -40,23 +47,24 @@ registerForm.onsubmit = function (event) {
   } else {
     repasswordError.innerHTML = "";
   }
-  const existingUser = userList.find(function (user) {
-    return user.username === username.value;
-  });
-  if (existingUser) {
-    registerError.innerHTML = "Tên đăng ký đã được sử dụng";
-  } else {
-    //Dang ky thanh cong
-    const newuser = {
-      username: username.value,
-      password: password.value,
-    };
-    userList.push(newuser);
-    localStorage.setItem("userList", JSON.stringify(userList));
-    registerError.innerHTML = "";
-    //chuyen den trang dang nhap
-    window.location.href = " ../login";
-  }
+  // const existingUser = userList.find(function (user) {
+  //   return user.username === username.value;
+  // });
+  // if (existingUser) {
+  //   registerError.innerHTML = "Tên đăng ký đã được sử dụng";
+  // } else {
+  //   //Dang ky thanh cong
+  //   const newuser = {
+  //     username: username.value,
+  //     password: password.value,
+  //   };
+  //   userList.push(newuser);
+  //   localStorage.setItem("userList", JSON.stringify(userList));
+  //   registerError.innerHTML = "";
+  //   //chuyen den trang dang nhap
+  //   window.location.href = " ../login";
+  // }
+  console.log("thanh cong");
 };
 
 //local storage
