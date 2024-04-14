@@ -1,7 +1,13 @@
+import { app, db } from "/firebase.js";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+} from "https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js";
+
 // Lấy ra phần tử (element)
 const registerForm = document.getElementById("register-form");
 // console.log(registerForm);
-const userList = JSON.parse(localStorage.getItem("userList")) || [];
+// const userList = JSON.parse(localStorage.getItem("userList")) || [];
 
 // loginBtn.innerHTML = 'Dang xuat abc xyz'
 // console.log(loginBtnText)
@@ -64,7 +70,21 @@ registerForm.onsubmit = function (event) {
   //   //chuyen den trang dang nhap
   //   window.location.href = " ../login";
   // }
-  console.log("thanh cong");
+  // console.log("thanh cong");
+  const auth = getAuth();
+  createUserWithEmailAndPassword(auth, email.value, password.value)
+    .then((userCredential) => {
+      // Signed up
+      const user = userCredential.user;
+      alert("Đăng ký thành công");
+      window.location.href = "/index.html";
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // ..
+      alert(errorMessage);
+    });
 };
 
 //local storage

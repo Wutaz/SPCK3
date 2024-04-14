@@ -1,7 +1,13 @@
+import { app, db } from "/firebase.js";
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+} from "https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js";
+
 // Lấy ra phần tử (element)
 const loginForm = document.getElementById("login-Form");
 // console.log(registerForm);
-const userList = JSON.parse(localStorage.getItem("userList")) || [];
+// const userList = JSON.parse(localStorage.getItem("userList")) || [];
 
 // loginBtn.innerHTML = 'Dang xuat abc xyz'
 // console.log(loginBtnText)
@@ -10,50 +16,61 @@ const userList = JSON.parse(localStorage.getItem("userList")) || [];
 
 loginForm.onsubmit = function (event) {
   event.preventDefault();
-  const username = document.getElementById("username");
+  const email = document.getElementById("email");
   const password = document.getElementById("password");
 
-  const usernameError = document.getElementById("username-error");
+  const emailError = document.getElementById("email-error");
   const passwordError = document.getElementById("password-error");
   const loginError = document.getElementById("login-error");
   // console.log(usernameError, passwordError, loginError)
 
   // kiem tra
 
-  if (username.value === "") {
-    usernameError.innerHTML = "Vui lòng nhập tên đăng nhập";
+  if (email.value === "") {
+    emailError.innerHTML = "Vui lòng nhập tên đăng nhập";
   } else {
-    usernameError.innerHTML = "";
+    emailError.innerHTML = "";
   }
   if (password.value === "") {
     passwordError.innerHTML = "Vui lòng nhập mật khẩu";
   } else {
     passwordError.innerHTML = "";
   }
-  if (username.value !== "phong" || password.value !== "123456") {
-    loginError.innerHTML = "Sai tên đăng nhập hoặc mật khẩu";
-  }
+
   // else {
   //   loginError.innerHTML = "";
   //   window.location.href = "../index.html";
   // }
-  const existingUser = userList.find(function (user) {
-    return user.username === username.value && user.password === password.value;
-  });
-  if (!existingUser) {
-    loginError.innerHTML = "Sai tên đăng nhập hoặc mật khẩu";
-  } else {
-    loginError.innerHTML = "";
-    //Dang ky thanh cong
-    const user = {
-      username: username.value,
-      password: password.value,
-    };
-    localStorage.setItem("user", JSON.stringify(user));
-    loginError.innerHTML = "";
-    //chuyen den trang dang nhap
-    window.location.href = " ../index.html";
-  }
+  //   const existingUser = userList.find(function (user) {
+  //     return user.username === username.value && user.password === password.value;
+  //   });
+  //   if (!existingUser) {
+  //     loginError.innerHTML = "Sai tên đăng nhập hoặc mật khẩu";
+  //   } else {
+  //     loginError.innerHTML = "";
+  //     //Dang ky thanh cong
+  //     const user = {
+  //       username: username.value,
+  //       password: password.value,
+  //     };
+  //     localStorage.setItem("user", JSON.stringify(user));
+  //     loginError.innerHTML = "";
+  //     //chuyen den trang dang nhap
+  //     window.location.href = " ../index.html";
+  //   }
+  const auth = getAuth();
+  signInWithEmailAndPassword(auth, email.value, password.value)
+    .then((userCredential) => {
+      // Signed in
+      const user = userCredential.user;
+      alert("Đăng nhập thành công");
+      window.location.href = "/index.html";
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      alert(errorMessage);
+    });
 };
 
 //local storage
