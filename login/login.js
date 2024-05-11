@@ -2,10 +2,13 @@ import { app, db } from "/firebase.js";
 import {
   getAuth,
   signInWithEmailAndPassword,
+  signInWithPopup,
+  GoogleAuthProvider,
 } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js";
 
 // Lấy ra phần tử (element)
 const loginForm = document.getElementById("login-Form");
+const loginGoogleBtn = document.getElementById("google");
 // console.log(registerForm);
 // const userList = JSON.parse(localStorage.getItem("userList")) || [];
 
@@ -13,6 +16,7 @@ const loginForm = document.getElementById("login-Form");
 // console.log(loginBtnText)
 
 // Xu ly khi nguoi dung bam nut Dang nhap
+const auth = getAuth();
 
 loginForm.onsubmit = function (event) {
   event.preventDefault();
@@ -58,7 +62,6 @@ loginForm.onsubmit = function (event) {
   //     //chuyen den trang dang nhap
   //     window.location.href = " ../index.html";
   //   }
-  const auth = getAuth();
   signInWithEmailAndPassword(auth, email.value, password.value)
     .then((userCredential) => {
       // Signed in
@@ -78,3 +81,32 @@ loginForm.onsubmit = function (event) {
 
 // const value = localStorage.getItem("message");
 // console.log(value)
+
+//xử lý đăng nhập Google
+loginGoogleBtn.onclick = function () {
+  const provider = new GoogleAuthProvider();
+
+  signInWithPopup(auth, provider)
+    .then((result) => {
+      // This gives you a Google Access Token. You can use it to access the Google API.
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+      const token = credential.accessToken;
+      // The signed-in user info.
+      const user = result.user;
+      // IdP data available using getAdditionalUserInfo(result)
+      // ...
+      alert("tc");
+      window.location.href = "/admin";
+    })
+    .catch((error) => {
+      // Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // The email of the user's account used.
+      const email = error.customData.email;
+      // The AuthCredential type that was used.
+      const credential = GoogleAuthProvider.credentialFromError(error);
+      // ...
+      alert(errorMessage);
+    });
+};

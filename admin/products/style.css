@@ -58,10 +58,10 @@ body {
   text-align: center;
   color: white;
 }
-.btn {
+/* .btn {
   color: brown;
   background-color: rgb(255, 123, 0);
-}
+} */
 .btn:hover {
   background-color: antiquewhite;
 }
@@ -103,8 +103,8 @@ body {
 }
 
 /* .product-img:hover {
-  transform: scale(1.1);
-} */
+    transform: scale(1.1);
+  } */
 
 .product-name {
   color: white;
@@ -140,4 +140,20 @@ body {
   align-items: center;
   justify-content: center;
   width: auto;
+}
+
+.table {
+  background-color: rgb(240, 139, 45);
+}
+.btn-sr {
+  color: brown;
+  background-color: rgb(255, 123, 0);
+}
+.btm-ca {
+  color: brown;
+  background-color: rgb(255, 123, 0);
+}
+.btn-spm {
+  color: brown;
+  background-color: rgb(255, 123, 0);
 }
