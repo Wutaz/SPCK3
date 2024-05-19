@@ -2,8 +2,6 @@
   scroll-behavior: smooth;
 }
 body {
-  background-color: rgb(227, 143, 63);
-  /* transition: all 9s; */
 }
 
 .text-pink {
@@ -29,12 +27,7 @@ body {
 .my-slider {
   height: 500px;
 }
-.dropdown-item {
-  transition: all 0.5s;
-}
-.dropdown-item:hover {
-  transform: scale(1.1);
-}
+
 .slider-img {
   object-fit: cover;
 }
@@ -42,9 +35,57 @@ body {
   background-color: rgb(185, 111, 42);
   margin: 0;
 }
+.product-list {
+  padding: 0 140px;
+  background-color: rgb(185, 111, 42);
+  display: flex;
+  flex-wrap: wrap;
+}
+.product {
+  width: calc(25% - 20px);
+  background-color: rgb(242, 167, 114);
+  margin: 10px;
+  border-radius: 4px;
+  transition: all 0.5s;
+  padding: 20px;
+}
+.product:hover {
+  transform: scale(1.1);
+}
+.product-img {
+  width: 100%;
+  height: 290px;
+  object-fit: cover;
+  display: block;
+}
 
+.product-name {
+  color: black;
+  font-size: 18px;
+  font-weight: bold;
+  text-decoration: none;
+  margin-bottom: 12px;
+  display: block;
+  padding: 5px;
+}
+.product-prices {
+  color: gray;
+  padding: 5px;
+}
+.product-prices s {
+  margin-left: 4px;
+  margin-right: 4px;
+}
+.new-price {
+  color: dodgerblue;
+  font-size: 20px;
+  font-weight: bold;
+}
+.reduce-price {
+  color: red;
+}
 #contact {
-  background-color: rgb(227, 118, 45);
+  background-color: rgb(255, 102, 0);
   height: 100px;
 }
 .contact-icons {
@@ -82,58 +123,4 @@ body {
 .fa-regular:hover {
   background-color: rgb(240, 139, 45);
   transform: scale(1.2);
-}
-.product {
-  /* width: calc(25% - 20px); */
-  background-color: rgb(236, 234, 234);
-  /* margin: 10px; */
-  border-radius: 8px;
-  padding: 20px;
-  transition: all 0.2s;
-  flex-direction: column;
-}
-.product:hover {
-  transform: scale(1.1);
-}
-.product-img {
-  width: 100%;
-  height: 290px;
-  object-fit: cover;
-  display: block;
-  /* transition: all 0.2s; */
-}
-
-/* .product-img:hover {
-  transform: scale(1.1);
-} */
-
-.product-name {
-  color: black;
-  font-size: 20px;
-  font-weight: bold;
-  text-decoration: none;
-  margin-top: 8px;
-  margin-bottom: 12px;
-  display: block;
-}
-
-.product-prices {
-  color: gray;
-  font-size: 14px;
-}
-
-.product-prices s {
-  margin-left: 4px;
-  margin-right: 4px;
-}
-
-.new-price {
-  color: dodgerblue;
-  font-size: 16px;
-  font-weight: bold;
-}
-#search-input {
-  max-width: 500px;
-  margin: 0 auto;
-  background-color: rgb(185, 111, 42);
 }
