@@ -15,7 +15,7 @@ addForm.onsubmit = function (event) {
   event.preventDefault();
   const name = document.getElementById("name");
   const price = document.getElementById("price");
-  const description = document.getElementById("Description");
+  const description = document.getElementById("description");
   const image = document.getElementById("image");
   const category = document.getElementById("category");
   //up anh

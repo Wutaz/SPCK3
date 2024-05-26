@@ -21,7 +21,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <link rel="stylesheet" href="../productsgd/style.css" />
+    <link rel="stylesheet" href="./style.css" />
     <link
       rel="icon"
       type="image/x-icon"
@@ -49,20 +49,11 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/productsmn/"
-                >Manga
-              </a>
-            </li>
-            <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="/productsmh/"
                 >Mô hình</a
               >
             </li>
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/productscp/"
-                >Trang phục cosplay</a
-              >
-            </li>
+
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="/productsgd/"
                 >Gundam</a
@@ -108,26 +99,30 @@
               placeholder="Search"
               aria-label="Search"
             />
-            <button class="btn" type="submit">
-              <i class="fa-solid fa-magnifying-glass"></i>
-            </button>
+            <div class="mx-2">
+              <button class="btn" type="submit">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </button>
+            </div>
           </form>
-          <a href="/login/index.html">
-            <i class="fa-regular fa-user p-2 mx-2"></i>
-          </a>
+          <div class="mx-2">
+            <a type="button" class="btn position-relative" href="/login">
+              <i class="fa-regular fa-user"></i>
+            </a>
+          </div>
           <!-- da dang nhap -->
-          <div class="ms-3 d-none" id="login-block">
+          <!-- <div class="ms-3 d-none" id="login-block">
             <i id="navbar-username"></i>
             <button class="btn btn-sm btn-dark ms-2" id="logout-btn">
               Đăng xuất
             </button>
-          </div>
+          </div> -->
           <!-- chua dang nhap -->
-          <div class="ms3 d-none" id="not-login-block">
+          <!-- <div class="ms3 d-none" id="not-login-block">
             <a href="/login" class="btn btn-sm btn-dark">Đăng nhập</a>
             <a href="/register" class="btn btn-sm btn-dark ms-2">Đăng ky</a>
-          </div>
-          <div class="mx-3">
+          </div> -->
+          <div class="mx-2">
             <a type="button" class="btn position-relative" href="/cart">
               <i class="fa-solid fa-cart-shopping"></i>
               <span
@@ -145,6 +140,6 @@
       <div id="product-list" class="row"></div>
     </div>
 
-    <script src="./productsmn.js" type="module"></script>
+    <script src="./products.js" type="module"></script>
   </body>
 </html>

@@ -18,28 +18,35 @@ function renderProduct(product) {
   productList.appendChild(div);
 
   div.innerHTML = `
-<div class="product" >
-  <a href="/product details">
-    <img
-      class="product-img"
-      src="${product.image}"
-      alt=""
-    />
-  </a>
-  <a>
-  ${product.name}
-  </a>
-  <div class="product-prices">
-    <span class="new-price">${product.price}đ</span>
-    <!-- gia goc -->
-    <!-- <s>500.000đ</s> -->
-    <!-- phan tram giam gia -->
-    <!-- <span>-14%</span>  -->
+  <div class="sp-container">
+  <div class="product-list">
+    <div class="product-imgs">
+      <a href="">
+        <img
+          class="product-img"
+          src="${product.image}"
+          alt=""
+        />
+      </a>
+    </div>
+    <div class="product-texts mx-2">
+      <h1 class="product-name" href=""
+          >${product.name}
+    </h1>
+        <div class="product-prices">
+          <span class="new-price">${product.price}đ</span>
+          
+          <span href="">${product.description}</span>
+        </div> 
+        <div>  
+          <button class="btn-sp" type="submit">Mua ngay</button>
+          <button class="btn-sp" type="submit">
+          <i class="fa-solid fa-cart-shopping"></i>
+          </button>
+        </div>
+      
+    </div>
   </div>
-  <div>
-  
-  </div>
-
 </div>`;
 }
 // xu ly dang xuat
