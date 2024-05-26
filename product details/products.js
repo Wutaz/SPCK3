@@ -1,57 +1,39 @@
 import { app, db } from "/firebase.js";
 import {
+  getStorage,
+  ref,
+  uploadBytes,
+  getDownloadURL,
+} from "https://www.gstatic.com/firebasejs/10.10.0/firebase-storage.js";
+import {
   collection,
-  getDocs,
+  addDoc,
+  doc,
+  getDoc,
 } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
 
-const querySnapshot = await getDocs(collection(db, "products"));
-querySnapshot.forEach((doc) => {
-  // doc.data() is never undefined for query doc snapshots
-  //   console.log(doc.id, " => ", doc.data());
-  const product = { ...doc.data(), id: doc.id };
-  renderProduct(product);
-});
+const params = new URLSearchParams(document.location.search);
+const productId = params.get("id");
+if (productId) {
+  const docRef = doc(db, "products", productId);
+  const docSnap = await getDoc(docRef);
 
-function renderProduct(product) {
-  const productList = document.getElementById("product-list");
-  const div = document.createElement("div");
-  productList.appendChild(div);
+  if (docSnap.exists()) {
+    console.log("Document data:", docSnap.data());
+    //hiển thị sp ra trang chi tiết sp
+    const name = document.getElementById("name");
+    const price = document.getElementById("price");
+    const description = document.getElementById("description");
+    const image = document.getElementById("image");
+    //...
 
-  div.innerHTML = `
-  <div class="sp-container">
-  <div class="product-list">
-    <div class="product-imgs">
-      <a href="">
-        <img
-          class="product-img"
-          src="${product.image}"
-          alt=""
-        />
-      </a>
-    </div>
-    <div class="product-texts mx-2">
-      <h1 class="product-name" href=""
-          >${product.name}
-    </h1>
-        <div class="product-prices">
-          <span class="new-price">${product.price}đ</span>
-          
-          <span href="">${product.description}</span>
-        </div> 
-        <div>  
-          <button class="btn-sp" type="submit">Mua ngay</button>
-          <button class="btn-sp" type="submit">
-          <i class="fa-solid fa-cart-shopping"></i>
-          </button>
-        </div>
-      
-    </div>
-  </div>
-</div>`;
+    name.innerHTML = docSnap.data().name;
+    price.innerHTML = docSnap.data().price + "đ";
+    description.innerHTML = docSnap.data().description;
+    image.setAttribute("src", docSnap.data().image);
+    // category.innerHTML = docSnap.data().category;
+  } else {
+    // docSnap.data() will be undefined in this case
+    console.log("No such document!");
+  }
 }
-// xu ly dang xuat
-// const logoutBtn = document.getElementById("logout-btn");
-// logoutBtn.onclick = function () {
-//   localStorage.removeItem("user");
-//   window.location.href = "/index.html";
-// };

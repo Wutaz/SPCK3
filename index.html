@@ -21,7 +21,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="/productsgd/style.css" />
     <link rel="icon" type="image/x-icon" href="./images/logo-emma-tron-02.png" />
     <title>Emma shop</title>
   </head>
@@ -96,40 +96,48 @@
               placeholder="Search"
               aria-label="Search"
             />
-            <button class="btn" type="submit">
-              <i class="fa-solid fa-magnifying-glass"></i>
-            </button>
+            <div class="mx-2">
+              <button class="btn" type="submit">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </button>
+              </div>
+            
+              
           </form>
-          <a href="/login/index.html">
-            <i class="fa-regular fa-user p-2 mx-2"></i>
-          </a>
-          <!-- da dang nhap -->
-          <div class="ms-3 d-none" id="login-block">
-            <i id="navbar-username"></i>
-            <button class="btn btn-sm btn-dark ms-2" id="logout-btn">
-              Đăng xuất
-            </button>
-          </div>
-          <!-- chua dang nhap -->
-          <div class="ms3 d-none" id="not-login-block">
-            <a href="/login" class="btn btn-sm btn-dark">Đăng nhập</a>
-            <a href="/register" class="btn btn-sm btn-dark ms-2">Đăng ky</a>
-          </div>
-          <div class="mx-3">
-            <a type="button" class="btn position-relative" href="/cart">
-              <i class="fa-solid fa-cart-shopping"></i>
-              <span
-                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
-                id="cart-quantity"
-              >
-                0
-              </span>
-            </a>
-          </div>
+            <div class="mx-2">
+              <a type="button" class="btn position-relative" href="/login">
+                <i class="fa-regular fa-user"></i>
+              </a>
+            </div>
+            <!-- da dang nhap -->
+            <!-- <div class="ms-3 d-none" id="login-block">
+              <i id="navbar-username"></i>
+              <button class="btn btn-sm btn-dark ms-2" id="logout-btn">
+                Đăng xuất
+              </button>
+            </div> -->
+            <!-- chua dang nhap -->
+            <!-- <div class="ms3 d-none" id="not-login-block">
+              <a href="/login" class="btn btn-sm btn-dark">Đăng nhập</a>
+              <a href="/register" class="btn btn-sm btn-dark ms-2">Đăng ky</a>
+            </div> -->
+            <div class="mx-2">
+              <a type="button" class="btn position-relative" href="/cart">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span
+                  class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                  id="cart-quantity"
+                >
+                  0
+                </span>
+              </a>
+            </div>
         </div>
       </div>
     </nav>
-    <div
+    
+    <div id="adn">
+      <div
       id="carouselExampleAutoplaying"
       class="carousel slide my-slider"
       data-bs-ride="carousel"
@@ -137,7 +145,7 @@
       <div class="carousel-inner h-100">
         <div class="carousel-item h-100 active">
           <img
-            src="../images/manga.jpg"
+            src="/images/new year sale.png"
             class="d-block w-100 h-100 slider-img"
             alt="..."
           />
@@ -151,7 +159,7 @@
         </div>
         <div class="carousel-item h-100">
           <img
-            src="../images/cosplay.png"
+            src="/images/login-bg.png"
             class="d-block w-100 h-100 slider-img"
             alt="..."
           />
@@ -176,38 +184,28 @@
         <span class="visually-hidden">Next</span>
       </button>
     </div>
-    <div id="adn">
-      <a href="">
-        <img src="/images/new year sale.png" alt="">
-      </a>
+    </div>
+    
+    <div id="product">
+      <div class="product-text">
+        <h1>Tất cả</h1>
+        
+    </div>  
+      </div> 
+    <div class="container">
+          <div id="product-list" class="row"></div>
+           
     </div>
 
 
-    <div id="contact">
-      <div class="contact-text">
-        <h1>Liên hệ</h1>
-      </div>
-      <div class="contact-icons">
-        <a href="https://www.facebook.com/profile.php?id=100089210212049"
-          ><i class="fa-brands fa-facebook"></i
-        ></a>
-        <a href="https://mail.google.com/mail/u/0/?pli=1#inbox"
-          ><i class="fa-solid fa-envelope"></i
-        ></a>
-        <a href="https://www.youtube.com/channel/UCcvpTXTUELP-djAeFW34naA"
-          ><i class="fa-brands fa-youtube"></i
-        ></a>
-        <a href="https://twitter.com/tranpho05119324"
-          ><i class="fa-brands fa-twitter"></i
-        ></a>
-      </div>
-      <div class="location"></div>
-    </div>
+
+    
   </body>
 </html>
 
     <script type="module" src="app.js"></script>
     <script type="module" src="/helper/getUser.js"></script>
+    <script type="module" src="/productsgd/products.js"></script>
 
   </body>
 </html>
