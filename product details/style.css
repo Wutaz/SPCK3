@@ -17,6 +17,7 @@ body {
 }
 .nav-link {
   transition: all 0.5s;
+  color: white;
 }
 .nav-link:hover {
   background-color: rgb(109, 109, 109);
@@ -108,7 +109,6 @@ body {
 }
 .btn-sp {
   height: 50px;
-  width: 90px;
   margin: 5px;
   background-color: rgb(255, 255, 255);
   border: none;
@@ -120,4 +120,7 @@ body {
   transform: scale(1.2);
   background-color: rgb(109, 109, 109);
   color: rgb(255, 255, 255);
+}
+#description {
+  color: white;
 }
