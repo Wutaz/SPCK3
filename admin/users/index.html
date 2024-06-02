@@ -32,7 +32,7 @@
   <body>
     <nav class="navbar sticky-top navbar-expand-lg">
       <div class="container-fluid">
-        <a class="navbar-brand" href="/index.html"
+        <a class="navbar-brand" href="#"
           ><img src="../images/logo-emma-tron-02.png" alt=""
         /></a>
         <button
@@ -49,44 +49,17 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="/admin/products"
-                >products
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/admin/users"
-                >user</a
+              <a class="nav-link active" aria-current="page" href="/admin/products"
+                >Sản phẩm</a
               >
             </li>
 
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/admin/users"
+                >Người dùng</a
               >
-                Dịch vụ
-              </a>
-              <ul class="dropdown-menu">
-                <!-- <li class="nav-item">
-                  <a class="nav-link" href="./contact.html">Liên hệ</a>
-                </li> -->
-                <li><hr class="dropdown-divider" /></li>
-                <li>
-                  <a class="dropdown-item" href="/comming soon/commingsoon.html"
-                    >Phản hồi với shop</a
-                  >
-                  <a class="dropdown-item" href="/comming soon/commingsoon.html"
-                    >Trả hàng</a
-                  >
-                  <a class="dropdown-item" href="/comming soon/commingsoon.html"
-                    >Đánh giá shop</a
-                  >
-                </li>
-              </ul>
             </li>
+           
             <!-- <li class="nav-item">
               <a class="nav-link disabled" aria-disabled="true">Disabled</a>
             </li> -->
@@ -99,26 +72,30 @@
               placeholder="Search"
               aria-label="Search"
             />
-            <button class="btn" type="submit">
-              <i class="fa-solid fa-magnifying-glass"></i>
-            </button>
+            <div class="mx-2">
+              <button class="btn" type="submit">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </button>
+            </div>
           </form>
-          <a href="/login/index.html">
-            <i class="fa-regular fa-user p-2 mx-2"></i>
-          </a>
+          <div class="mx-2">
+            <a id="user-icon" type="button" class="btn position-relative" href="/login">
+              <i class="fa-regular fa-user"></i>
+            </a>              </a>
+          </div>
           <!-- da dang nhap -->
-          <div class="ms-3 d-none" id="login-block">
+          <!-- <div class="ms-3 d-none" id="login-block">
             <i id="navbar-username"></i>
             <button class="btn btn-sm btn-dark ms-2" id="logout-btn">
               Đăng xuất
             </button>
-          </div>
+          </div> -->
           <!-- chua dang nhap -->
-          <div class="ms3 d-none" id="not-login-block">
+          <!-- <div class="ms3 d-none" id="not-login-block">
             <a href="/login" class="btn btn-sm btn-dark">Đăng nhập</a>
             <a href="/register" class="btn btn-sm btn-dark ms-2">Đăng ky</a>
-          </div>
-          <div class="mx-3">
+          </div> -->
+          <div class="mx-2">
             <a type="button" class="btn position-relative" href="/cart">
               <i class="fa-solid fa-cart-shopping"></i>
               <span
@@ -134,5 +111,6 @@
     </nav>
 
     <script src="./productsmn.js" type="module"></script>
+    <script type="module" src="/helper/handleAuthRoute.js"></script>
   </body>
 </html>

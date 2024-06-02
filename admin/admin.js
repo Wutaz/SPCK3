@@ -19,3 +19,31 @@ onAuthStateChanged(auth, (user) => {
     // ...
   }
 });
+function renderProduct(product) {
+  const productList = document.getElementById("product-list");
+  const div = document.createElement("div");
+  productList.appendChild(div);
+
+  div.innerHTML = `
+<div class="product" >
+  <a href="/product details/index.html?id=${product.id}">
+    <img
+      class="product-img"
+      src="${product.image}"
+      alt=""
+    />
+  </a>
+  <a>
+  ${product.name}
+  </a>
+  <div class="product-prices">
+    <span class="new-price">${product.price}đ</span>
+    <!-- gia goc -->
+    <!-- <s>500.000đ</s> -->
+    <!-- phan tram giam gia -->
+    <!-- <span>-14%</span>  -->
+  </div>
+
+
+</div>`;
+}
