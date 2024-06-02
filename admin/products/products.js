@@ -44,8 +44,8 @@ function renderProduct(product) {
   <td>${product.category}</td>
 
   <td>
-    <a href="./edit/index.html?id=${product.id}" class="btn btn-sm btn-secondary me-2">Chỉnh sửa</a>
-    <button class="btn btn-sm btn-danger delete-btn">Xóa</button>
+    <a href="./edit/index.html?id=${product.id}" class="btn-edit btn btn-sm btn-secondary me-2">Chỉnh</a>
+    <button class="btn-del btn btn-sm btn-danger delete-btn">Xóa</button>
   </td>
 </tr>`;
 
