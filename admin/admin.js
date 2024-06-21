@@ -6,19 +6,19 @@ import {
 
 //kiểm tra uẻ đã đăng nhập chx
 const auth = getAuth();
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    // User is signed in, see docs for a list of available properties
-    // https://firebase.google.com/docs/reference/js/auth.user
-    const uid = user.uid;
-    window.location.href = "/admin/products";
-    // ...
-  } else {
-    // User is signed out
-    window.location.href = "/login";
-    // ...
-  }
-});
+
+if (user) {
+  // User is signed in, see docs for a list of available properties
+  // https://firebase.google.com/docs/reference/js/auth.user
+  const uid = user.uid;
+  window.location.href = "/admin/products";
+  // ...
+} else {
+  // User is signed out
+  window.location.href = "/login";
+  // ...
+}
+
 function renderProduct(product) {
   const productList = document.getElementById("product-list");
   const div = document.createElement("div");

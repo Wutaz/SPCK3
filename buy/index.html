@@ -49,13 +49,13 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="/productsmh/"
+              <a class="nav-link active" aria-current="page" href="/productsmh/"
                 >Mô hình</a
               >
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="/productsgd/"
+              <a class="nav-link active" aria-current="page" href="/productsgd/"
                 >Gundam</a
               >
             </li>
@@ -69,7 +69,7 @@
               class="form-control me-2"
               id="search-input"
               type="search"
-              placeholder="Search"
+              placeholder="Tìm kiếm"
               aria-label="Search"
             />
             <div class="mx-2">
@@ -109,30 +109,90 @@
         </div>
       </div>
     </nav>
-    <div class="container">
-      <div class="product-list">
-        <div class="product-imgs">
-          <a href="">
-            <img class="product-img" id="image" src="" alt="" />
-          </a>
-        </div>
-        <div class="product-texts">
-          <h1 class="product-name" id="name" href=""></h1>
-          <div class="product-prices">
-            <span class="new-price" id="price"></span>
-            <button class="btn-sp">Thêm vào giỏ hàng</button>
-            <button class="btn-sp">Mua ngay</button>
+    <div class="container mt-4">
+      <div class="row">
+        <div class="col-12 col-md-4">
+          <div class="py-4 px-3 rounded border">
+            <div class="d-flex justify-content-between my-1">
+              <span>Địa chỉ giao hàng:</span>
+              <input class="form-control me-2" type="" placeholder="Bắt buộc">
+            </div>
+            <div class="d-flex justify-content-between my-1">
+              <span>Tên người nhận:</span>
+              <input class="form-control me-2" type="" placeholder="Bắt buộc">
+            </div>
+            <div class="d-flex justify-content-between my-1 fw-bold">
+              <span>Tổng cộng:</span>
+              <span class="text-primary" style="font-size: 17px" id="total"
+                >0₫</span
+              >
+            </div>
+            
           </div>
-          <span id="description"></span>
-          <!-- gia goc -->
-          <!-- <s>500.000đ</s> -->
-          <!-- phan tram giam gia -->
-          <!-- <span>-14%</span>  -->
+        </div>
+        <div class="col-12 col-md-8">
+          <div class="py-4 px-3 rounded border">
+            <table class="table align-middle">
+              <thead>
+                <tr>
+                  <th scope="col">Hình ảnh</th>
+                  <th scope="col">Tên sản phẩm</th>
+                  <th scope="col">Giá bán</th>
+                  <th scope="col">Số lượng</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="tbody">
+                <tr>
+                  <td>
+                    <img
+                      src="https://cdna.artstation.com/p/assets/images/images/055/223/532/large/ant-hsu-gundam-20221021.jpg?1666414904"
+                      alt=""
+                      class="product-img"
+                    />
+                  </td>
+                  <td>
+                    <a href="" class="text-decoration-none text-black">
+                      Iphone 15 pro max</td>
+                    </a>
+                  <td>21.490.000₫</td>
+                  </td>
+
+                  <td>
+                    <div
+                      class="btn-group"
+                      role="group"
+                      aria-label="Basic mixed styles example"
+                    >
+                      <button type="button" class="btn btn-light">-</button>
+                      <button
+                        type="button"
+                        class="btn btn-light select-text"
+                        disabled
+                      >
+                        1
+                      </button>
+                      <button type="button" class="btn btn-light">+</button>
+                    </div>
+                  </td>
+                  
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="text-end">
+
+            <hr />
+            <button class="btn btn-primary w-100" id="checkout-btn">
+              Đặt hàng
+            </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+
+    <script src="./buy.js" type="module"></script>
     <script type="module" src="/helper/handleAuthRoute.js"></script>
-    <script src="./products.js" type="module"></script>
-    
   </body>
 </html>

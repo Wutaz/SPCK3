@@ -1,154 +1,125 @@
-import displayOnNavbar from '../helper/displayOnNavbar.js'
-import displayCartQuantity from '../helper/displayCartQuantity.js'
-import getUser from '../helper/getUser.js'
-import formatCurrency from '../utils/formatCurrency.js'
+import { app, db } from "/firebase.js";
+import {
+  collection,
+  getDocs,
+  doc,
+  deleteDoc,
+  query,
+  where,
+  getDoc,
+} from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
+import {
+  getAuth,
+  onAuthStateChanged,
+} from "https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js";
 
-displayOnNavbar()
-displayCartQuantity()
+const auth = getAuth();
+let userId;
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    // User is signed in, see docs for a list of available properties
+    // https://firebase.google.com/docs/reference/js/auth.user
+    userId = user.uid;
+    fetchProducts();
+  } else {
+    // User is signed out
+    return;
+  }
+});
 
-const SHIPPING_FEE = 30000
+const tbody = document.getElementById("tbody");
 
-const tbody = document.getElementById('tbody')
+async function fetchProducts() {
+  // console.log(userId);
+  tbody.innerHTML = "";
+  if (!userId) return;
+  const q = query(collection(db, "cart"), where("userId", "==", userId));
 
-const userList = JSON.parse(localStorage.getItem('userList')) || []
-const currentUser = getUser()
+  const querySnapshot = await getDocs(q);
+  querySnapshot.forEach(async (cartDoc) => {
+    // doc.data() is never undefined for query doc snapshots
+    let data = { ...cartDoc.data() };
+    data.id = cartDoc.id;
+    const docRef = doc(db, "products", data.productId);
+    const docSnap = await getDoc(docRef);
 
-// Hien thi danh sach sp trong gio hang
-function renderCartItems() {
-  if (currentUser) {
-    const userWithCart = userList.find(function (u) {
-      return u.username === currentUser.username
-    })
-
-    const cart = userWithCart.cart || []
-
-    tbody.innerHTML = ''
-    let subtotalMoney = 0
-
-    for (let i = 0; i < cart.length; i++) {
-      const item = cart[i]
-
-      // Tạo ra các thẻ và append vào
-      const productImg = document.createElement('img')
-      productImg.classList.add('product-img')
-      productImg.setAttribute('src', item.product.image)
-
-      const imgTd = document.createElement('td')
-      imgTd.appendChild(productImg)
-
-      const productName = document.createElement('a')
-      productName.innerHTML = item.product.name
-      productName.setAttribute(
-        'href',
-        '/detail/index.html?id=' + item.product.id
-      )
-      productName.classList.add('text-decoration-none', 'text-black')
-
-      const nameTd = document.createElement('td')
-      nameTd.appendChild(productName)
-
-      const priceTd = document.createElement('td')
-      priceTd.innerHTML = formatCurrency(item.product.price)
-
-      const minusBtn = document.createElement('btn')
-      minusBtn.innerHTML = '-'
-      minusBtn.classList.add('btn', 'btn-light')
-
-      const plusBtn = document.createElement('btn')
-      plusBtn.innerHTML = '+'
-      plusBtn.classList.add('btn', 'btn-light')
-
-      const quantityBtn = document.createElement('btn')
-      quantityBtn.classList.add('btn', 'btn-light', 'select-text')
-      quantityBtn.disabled = true
-      quantityBtn.innerHTML = item.quantity
-
-      const btnGroup = document.createElement('div')
-      btnGroup.classList.add('btn-group')
-      btnGroup.appendChild(minusBtn)
-      btnGroup.appendChild(quantityBtn)
-      btnGroup.appendChild(plusBtn)
-
-      const quantityTd = document.createElement('td')
-      quantityTd.appendChild(btnGroup)
-
-      const deleteBtn = document.createElement('btn')
-      deleteBtn.innerHTML = '<i class="fa-regular fa-trash-can"></i>'
-      deleteBtn.classList.add('btn', 'btn-sm', 'btn-outline-danger')
-
-      // Xu ly khi nguoi dung click xoa item
-      deleteBtn.onclick = function () {
-        deleteCartItem(i)
-      }
-
-      const deleteTd = document.createElement('td')
-      deleteTd.appendChild(deleteBtn)
-
-      const tr = document.createElement('tr')
-      tr.appendChild(imgTd)
-      tr.appendChild(nameTd)
-      tr.appendChild(priceTd)
-      tr.appendChild(quantityTd)
-      tr.appendChild(deleteTd)
-
-      tbody.appendChild(tr)
-
-      subtotalMoney += item.quantity * item.product.price
+    if (docSnap.exists()) {
+      data.product = { ...docSnap.data() };
+      console.log("Document data:", docSnap.data());
+    } else {
+      // docSnap.data() will be undefined in this case
+      console.log("No such document!");
     }
+    renderProduct(data);
 
-    // Hiển thị thông tin tiền
-    const subtotal = document.getElementById('subtotal')
-    const shippingFee = document.getElementById('shipping-fee')
-    const total = document.getElementById('total')
+    // console.log(doc.id, " => ", doc.data());
+  });
 
-    shippingFee.innerHTML = formatCurrency(SHIPPING_FEE)
-    subtotal.innerHTML = formatCurrency(subtotalMoney)
-    total.innerHTML = formatCurrency(subtotalMoney + SHIPPING_FEE)
-  }
+  // const querySnapshot = await getDocs(collection(db, "products"));
+  // let i = 1;
+  // querySnapshot.forEach((doc) => {
+  //   // doc.data() is never undefined for query doc snapshots
+  //   //   console.log(doc.id, " => ", doc.data());
+  //   const product = { ...doc.data(), id: doc.id, order: i };
+  //   renderProduct(product);
+  //   i++;
+  // });
 }
 
-renderCartItems()
+fetchProducts();
+function renderProduct(item) {
+  const tr = document.createElement("tr");
+  tbody.appendChild(tr);
 
-function deleteCartItem(itemIndex) {
-  const userWithCart = userList.find(function (u) {
-    return u.username === currentUser.username
-  })
+  tr.innerHTML = `<td>
+                    <img
+                      src="${item.product.image}"
+                      alt=""
+                      class="product-img"
+                    />
+                  </td>
+                  <td>
+                    <a href="" class="text-decoration-none text-black">
+                      ${item.product.name}</td>
+                    </a>
+                  <td>${item.product.price}đ</td>
+                  </td>
 
-  const cart = userWithCart.cart || []
-  const userIndex = userList.indexOf(userWithCart)
+                  <td>
+                    <div
+                      class="btn-group"
+                      role="group"
+                      aria-label="Basic mixed styles example"
+                    >
+                      <button type="button" class="btn btn-light">-</button>
+                      <button
+                        type="button"
+                        class="btn btn-light select-text"
+                        disabled
+                      >
+                        ${item.quantity}
+                      </button>
+                      <button type="button" class="btn btn-light">+</button>
+                    </div>
+                  </td>
+                  <td>
+                    <button class="btn btn-del btn-sm btn-outline-danger">
+                      <i class="fa-regular fa-trash-can"></i>
+                    </button>
+                  </td>`;
 
-  // Xoa item trong cart
-  cart.splice(itemIndex, 1)
-
-  userWithCart.cart = cart
-  userList[userIndex] = userWithCart
-
-  // Cap nhat len local storage
-  localStorage.setItem('userList', JSON.stringify(userList))
-
-  renderCartItems()
-  displayCartQuantity()
+  // const deleteBBtn =
+  //   document.getElementsByClassName("delete-btn")[product.order - 1];
+  // deleteBBtn.onclick = function () {
+  //   deleteProduct(product);
+  // };
 }
-
-// Xu ly dat hang
-const checkoutBtn = document.getElementById('checkout-btn')
-checkoutBtn.onclick = function () {
-  if (currentUser) {
-    const userWithCart = userList.find(function (u) {
-      return u.username === currentUser.username
-    })
-
-    const userIndex = userList.indexOf(userWithCart)
-
-    userWithCart.cart = []
-    userList[userIndex] = userWithCart
-
-    // Cap nhat len local storage
-    localStorage.setItem('userList', JSON.stringify(userList))
-
-    renderCartItems()
-    displayCartQuantity()
-
-    alert('Đặt hàng thành công')
+async function deleteProduct(product) {
+  const isConfirm = confirm("Bạn Chắc Chưa" + product.name);
+  if (!isConfirm) {
+    return;
   }
+  //xoa sp
+  await deleteDoc(doc(db, "products", product.id));
+  fetchProducts();
 }
