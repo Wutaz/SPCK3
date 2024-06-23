@@ -32,10 +32,9 @@
   <body>
     <nav class="navbar sticky-top navbar-expand-lg">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#"
-          ><img src="/images/logo-emma-tron-02.png" alt="" />
-        </a>
-
+        <a class="navbar-brand" href="/admin/index.html"
+          ><img src="/images/logo-emma-tron-02.png" alt=""
+        /></a>
         <button
           class="navbar-toggler"
           type="button"
@@ -54,16 +53,16 @@
                 class="nav-link active"
                 aria-current="page"
                 href="/admin/products"
-                >products
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="/admin/users"
-                >user</a
+                >Sản phẩm</a
               >
             </li>
 
-           
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/admin/users"
+                >Người dùng</a
+              >
+            </li>
+
             <!-- <li class="nav-item">
               <a class="nav-link disabled" aria-disabled="true">Disabled</a>
             </li> -->
@@ -76,36 +75,20 @@
               placeholder="Search"
               aria-label="Search"
             />
-            <button class="btn btn-sr" type="submit">
-              <i class="fa-solid fa-magnifying-glass"></i>
-            </button>
+            <div class="mx-2">
+              <button class="btn" type="submit">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </button>
+            </div>
           </form>
-          <a href="/login/index.html">
-            <i class="fa-regular fa-user p-2 mx-2"></i>
-          </a>
-          <!-- da dang nhap -->
-          <div class="ms-3 d-none" id="login-block">
-            <i id="navbar-username"></i>
-            <button class="btn btn-dx btn-sm btn-dark ms-2" id="logout-btn">
-              Đăng xuất
-            </button>
-          </div>
-          <!-- chua dang nhap -->
-          <div class="ms3 d-none" id="not-login-block">
-            <a href="/login" class="btn-lo btn btn-sm btn-dark">Đăng nhập</a>
-            <a href="/register" class="btn-re btn btn-sm btn-dark ms-2"
-              >Đăng ky</a
+          <div class="mx-2">
+            <a
+              id="user-icon"
+              type="button"
+              class="btn position-relative"
+              href="/login/index.html"
             >
-          </div>
-          <div class="mx-3">
-            <a type="button" class="btn btm-ca position-relative" href="/cart">
-              <i class="fa-solid fa-cart-shopping"></i>
-              <span
-                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
-                id="cart-quantity"
-              >
-                0
-              </span>
+              <i class="fa-regular fa-user"></i>
             </a>
           </div>
         </div>
@@ -114,10 +97,10 @@
     
     <div class="container">
       <div class="text-end mb-4">
-        <a href="../" class="btn btn-spm">Quay lại danh sách sản phẩm</a>
+        <a href="../" class="btn btn-exit btn-spm">Quay lại danh sách sản phẩm</a>
         
       </div>
-      <h3>Chỉnh sửa Sản Phẩm</h3>
+      <h3 class="namepas">Chỉnh sửa</h3>
       <form id="add-form"class="mx-auto mb-5" style="max-width: 500px;">
         <div class="mb-3">
           <label for="name" class="form-label">Tên</label>
@@ -125,7 +108,7 @@
         </div>
         <div class="mb-3">
           <label for="image" class="form-label">Hình   </label>
-          <input class="form-control" type="file" accept="image/*" id="image" >
+          <input class="form-control" type="file" accept="image/*" id="image" required>
         </div>
         <div class="mb-3">
           <label for="price" class="form-label">Giá tiền</label>
@@ -135,14 +118,14 @@
           <label for="category" class="form-label">Danh mục sản phẩm</label>
           <select id="category" class="form-select" aria-label="Default select example">
             <option value="Gundam">Gundam</option>
-            <option value="Mô hình">Mô hình</option>
+            <option value="Mô hình">Figure</option>
           </select>
         </div>
         <div class="mb-3">
           <label for="description" class="form-label"> Mô tả</label>
           <textarea class="form-control" id="description" rows="3" placeholder="Mô tả"></textarea>
         </div>
-        <button class="btn w-100">Chỉnh</button>
+        <button class="btn btn-add w-100">Chỉnh</button>
       </form>
         <!-- <thead>
           <tr>

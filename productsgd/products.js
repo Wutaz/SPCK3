@@ -2,9 +2,13 @@ import { app, db } from "/firebase.js";
 import {
   collection,
   getDocs,
+  query,
+  where,
 } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
 
-const querySnapshot = await getDocs(collection(db, "products"));
+const q = query(collection(db, "products"), where("category", "==", "Gundam"));
+
+const querySnapshot = await getDocs(q);
 querySnapshot.forEach((doc) => {
   // doc.data() is never undefined for query doc snapshots
   //   console.log(doc.id, " => ", doc.data());

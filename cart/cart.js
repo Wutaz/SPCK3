@@ -28,6 +28,8 @@ onAuthStateChanged(auth, (user) => {
 });
 
 const tbody = document.getElementById("tbody");
+const SHIPPING_FEE = 30000;
+let subtotal = 0;
 
 async function fetchProducts() {
   // console.log(userId);
@@ -46,12 +48,19 @@ async function fetchProducts() {
     if (docSnap.exists()) {
       data.product = { ...docSnap.data() };
       console.log("Document data:", docSnap.data());
+      renderProduct(data);
     } else {
       // docSnap.data() will be undefined in this case
       console.log("No such document!");
     }
-    renderProduct(data);
 
+    const subtotalEl = document.getElementById("subtotal");
+    const shippngEl = document.getElementById("shipping");
+    const totalEl = document.getElementById("total");
+
+    subtotalEl.innerHTML = `${subtotal} đ`;
+    shippngEl.innerHTML = `${SHIPPING_FEE} đ`;
+    totalEl.innerHTML = `${subtotal + SHIPPING_FEE} đ`;
     // console.log(doc.id, " => ", doc.data());
   });
 
@@ -67,7 +76,11 @@ async function fetchProducts() {
 }
 
 fetchProducts();
+
 function renderProduct(item) {
+  console.log(item);
+  const singleTotal = Number(item.product.price) * Number(item.quantity);
+  subtotal += singleTotal;
   const tr = document.createElement("tr");
   tbody.appendChild(tr);
 
@@ -82,7 +95,7 @@ function renderProduct(item) {
                     <a href="" class="text-decoration-none text-black">
                       ${item.product.name}</td>
                     </a>
-                  <td>${item.product.price}đ</td>
+                  <td class="price">${item.product.price}đ</td>
                   </td>
 
                   <td>
@@ -113,13 +126,4 @@ function renderProduct(item) {
   // deleteBBtn.onclick = function () {
   //   deleteProduct(product);
   // };
-}
-async function deleteProduct(product) {
-  const isConfirm = confirm("Bạn Chắc Chưa" + product.name);
-  if (!isConfirm) {
-    return;
-  }
-  //xoa sp
-  await deleteDoc(doc(db, "products", product.id));
-  fetchProducts();
 }

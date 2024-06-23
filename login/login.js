@@ -67,7 +67,7 @@ loginForm.onsubmit = function (event) {
       // Signed in
       const user = userCredential.user;
       alert("Đăng nhập thành công");
-      if (user.uid === "Fw10csKRbCaw0w9eB0NieNq0syI2") {
+      if (user.uid === "pxgmuhzw6vSutfyOoXfR59P9s3W2") {
         window.location.href = "/admin";
       } else {
         window.location.href = "/";

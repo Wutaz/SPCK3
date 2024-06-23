@@ -36,9 +36,9 @@ body {
   background-color: rgb(185, 111, 42);
   margin: 0;
 }
-.product-list {
+#product-list {
   padding: 0 140px;
-  background-color: rgb(185, 111, 42);
+
   display: flex;
   flex-wrap: wrap;
 }
@@ -131,4 +131,12 @@ body {
 #product {
   background-color: rgb(0, 0, 0);
   height: auto;
+}
+.add-btn {
+  background-color: aqua;
+  color: rgb(0, 0, 0);
+}
+.add-btn:hover {
+  background-color: azure;
+  color: grey;
 }
