@@ -5,6 +5,7 @@ import {
   doc,
   deleteDoc,
 } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
+import formatCurrency from "/utils/formatCurrency.js";
 
 const tbody = document.getElementById("tbody");
 
@@ -39,12 +40,14 @@ function renderProduct(product) {
     />
   </td>
   <td>${product.name}</td>
-  <td>${product.price}đ</td>
+  <td>${formatCurrency(product.price)}</td>
   <td>${product.description}</td>
   <td>${product.category}</td>
 
   <td>
-    <a href="./edit/index.html?id=${product.id}" class="btn-edit btn btn-sm btn-secondary me-2">Chỉnh</a>
+    <a href="./edit/index.html?id=${
+      product.id
+    }" class="btn-edit btn btn-sm btn-secondary me-2">Chỉnh</a>
     <button class="btn-del btn btn-sm btn-danger delete-btn">Xóa</button>
   </td>
 </tr>`;

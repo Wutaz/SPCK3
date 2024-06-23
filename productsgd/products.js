@@ -5,6 +5,7 @@ import {
   query,
   where,
 } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
+import formatCurrency from "/utils/formatCurrency.js";
 
 const q = query(collection(db, "products"), where("category", "==", "Gundam"));
 
@@ -23,7 +24,7 @@ function renderProduct(product) {
 
   div.innerHTML = `
 <div class="product" >
-  <a href="/product details/index.html?id=${product.id}">
+  <a class="mx-2" href="/product details/index.html?id=${product.id}">
     <img
       class="product-img"
       src="${product.image}"
@@ -34,7 +35,7 @@ function renderProduct(product) {
   ${product.name}
   </a>
   <div class="product-prices">
-    <span class="new-price">${product.price}đ</span>
+    <span class="new-price">${formatCurrency(product.price)}</span>
     <!-- gia goc -->
     <!-- <s>500.000đ</s> -->
     <!-- phan tram giam gia -->

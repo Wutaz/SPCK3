@@ -12,6 +12,7 @@ import {
   getAuth,
   onAuthStateChanged,
 } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js";
+import formatCurrency from "/utils/formatCurrency.js";
 
 const auth = getAuth();
 let userId;
@@ -95,7 +96,7 @@ function renderProduct(item) {
                     <a href="" class="text-decoration-none text-black">
                       ${item.product.name}</td>
                     </a>
-                  <td class="price">${item.product.price}đ</td>
+                  <td class="price">${formatCurrency(item.product.price)}</td>
                   </td>
 
                   <td>

@@ -14,6 +14,7 @@ import {
   getAuth,
   onAuthStateChanged,
 } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js";
+import formatCurrency from "/utils/formatCurrency.js";
 
 const auth = getAuth();
 let userId;
@@ -56,7 +57,7 @@ function renderProduct(product) {
     ${product.name}
     </a>
     <div class="product-prices">
-      <span class="new-price">${product.price}đ</span>
+      <span class="new-price">${formatCurrency(product.price)}</span>
       <a type="button" class="btn add-btn ">Thêm vào giỏ hàng</a>
       <!-- gia goc -->
       <!-- <s>500.000đ</s> -->
