@@ -23,8 +23,8 @@ function renderProduct(product) {
   productList.appendChild(div);
 
   div.innerHTML = `
-<div class="product">
-  <a>
+<div class="product" >
+  <a class="mx-2" href="/product details/index.html?id=${product.id}">
     <img
       class="product-img"
       src="${product.image}"
@@ -41,9 +41,7 @@ function renderProduct(product) {
     <!-- phan tram giam gia -->
     <!-- <span>-14%</span>  -->
   </div>
-  <div>
-  
-  </div>
+
 
 </div>`;
 }

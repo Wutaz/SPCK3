@@ -59,9 +59,9 @@ async function fetchProducts() {
     const shippngEl = document.getElementById("shipping");
     const totalEl = document.getElementById("total");
 
-    subtotalEl.innerHTML = `${subtotal} đ`;
-    shippngEl.innerHTML = `${SHIPPING_FEE} đ`;
-    totalEl.innerHTML = `${subtotal + SHIPPING_FEE} đ`;
+    subtotalEl.innerHTML = `${formatCurrency(subtotal)} `;
+    shippngEl.innerHTML = `${formatCurrency(SHIPPING_FEE)} `;
+    totalEl.innerHTML = `${formatCurrency(subtotal + SHIPPING_FEE)} `;
     // console.log(doc.id, " => ", doc.data());
   });
 

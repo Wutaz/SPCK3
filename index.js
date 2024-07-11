@@ -46,18 +46,18 @@ function renderProduct(product) {
 
   div.innerHTML = `
  <div>
-    <a>
-      <img
-        class="product-img"
-        src="${product.image}"
-        alt=""
-      />
-    </a>
-    <a>
-    ${product.name}
-    </a>
-    <div class="product-prices">
-      <span class="new-price">${formatCurrency(product.price)}</span>
+    <a class="mx-2" href="/product details/index.html?id=${product.id}">
+    <img
+      class="product-img"
+      src="${product.image}"
+      alt=""
+    />
+  </a>
+  <a>
+  ${product.name}
+  </a>
+  <div class="product-prices">
+    <span class="new-price">${formatCurrency(product.price)}</span>
       <a type="button" class="btn add-btn ">Thêm vào giỏ hàng</a>
       <!-- gia goc -->
       <!-- <s>500.000đ</s> -->
